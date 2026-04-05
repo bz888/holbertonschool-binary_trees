@@ -2,17 +2,19 @@
 #include <stdlib.h>
 
 /**
- * binary_tree_delete - delete entire binary tree
- * @tree: pointer to the root node of the tree to delete
+ * binary_tree_is_leaf - check if node is a leaf node
+ * @node: pointer to node being checked
+ * Return: 1 if true, else 0
  */
 
-void binary_tree_delete(binary_tree_t *tree)
+int binary_tree_is_leaf(const binary_tree_t *node)
 {
-	if (!tree)
-		return;
+	if (!node)
+		return (0);
 
-	binary_tree_delete(tree->left);
-	binary_tree_delete(tree->right);
-	free(tree);
+	if (node->left || node->right)
+		return (0);
+
+	return (1);
 }
 
